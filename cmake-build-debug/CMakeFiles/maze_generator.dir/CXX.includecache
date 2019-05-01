@@ -6,9 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/59485/CLionProjects/maze-generator/main.cpp
+/Users/whitaker/Projects/maze-generator/main.cpp
 iostream
 -
 map
+-
+random
+-
+fstream
 -
 

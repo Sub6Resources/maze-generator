@@ -1,10 +1,12 @@
 #include <iostream>
 #include <map>
+#include <random>
+#include <fstream>
 
-const int N = 1;
-const int S = 2;
-const int E = 4;
-const int W = 8;
+const int N = 2;
+const int S = 8;
+const int E = 1;
+const int W = 4;
 
 std::map<int, int> DX;
 std::map<int, int> DY;
@@ -12,7 +14,7 @@ std::map<int, int> OPPOSITE;
 
 void printGrid(int* grid[], int width, int height) {
     for (int x = 0; x < width; ++x) {
-        std::cout << " " << "_";
+        std::cout << " _";
     }
     std::cout << std::endl;
     for (int y = 0; y < height; ++y) {
@@ -31,12 +33,30 @@ void printGrid(int* grid[], int width, int height) {
 }
 
 void saveGridToFile(int* grid[], int width, int height) {
+    std::ofstream output("small.maze");
 
+    char buffer[width * height];
+
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            buffer[y * width + x] = char(grid[y][x]);
+        }
+    }
+
+    for (int i = 0; i < width * height; i += 2) {
+        output << char((buffer[i] << 4) | (buffer[i+1]));
+    }
+
+    output.close();
 }
 
 void carve_passages_from(int currentX, int currentY, int* grid[], int width, int height) {
     int directions[4] = {N, S, E, W};
-    std::random_shuffle(std::begin(directions), std::end(directions));
+
+    std::random_device rd;
+    std::mt19937 g(rd());
+
+    std::shuffle(std::begin(directions), std::end(directions), g);
 
     for (int direction : directions) {
         int newX = currentX + DX[direction];
@@ -87,6 +107,8 @@ int main() {
     carve_passages_from(0, 0, grid, width, height);
 
     printGrid(grid, width, height);
+
+    saveGridToFile(grid, width, height);
 
     std::cout << "Finished!" << std::endl;
 

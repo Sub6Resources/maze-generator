@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/59485/CLionProjects/maze-generator/main.cpp" "/Users/59485/CLionProjects/maze-generator/cmake-build-debug/CMakeFiles/maze_generator.dir/main.cpp.o"
+  "/Users/whitaker/Projects/maze-generator/main.cpp" "/Users/whitaker/Projects/maze-generator/cmake-build-debug/CMakeFiles/maze_generator.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
