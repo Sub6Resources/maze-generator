@@ -67,7 +67,11 @@ void carve_passages_from(int currentX, int currentY, int* grid[], int width, int
             grid[newY][newX] |= OPPOSITE[direction];
             carve_passages_from(newX, newY, grid, width, height);
         }
+
+//        printGrid(grid, width, height);
     }
+
+
 }
 
 int main() {
